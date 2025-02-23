@@ -7,27 +7,20 @@ public class ex4 {
 	            {-1, 2, 1, -5},
 	            {4, -1, 2, 1}
 	        };
-
 	        findMaxSubMatrix(matrice);
 	    }
-
 	    public static void findMaxSubMatrix(int[][] matrice) {
 	        int lignes = matrice.length;
 	        int colonnes = matrice[0].length;
 
 	        int maxSomme = Integer.MIN_VALUE;
 	        int debutLigne = 0, finLigne = 0, debutCol = 0, finCol = 0;
-
-	       
 	        for (int haut = 0; haut < lignes; haut++) {
 	            int[] sommeTemp = new int[colonnes];
-
 	            for (int bas = haut; bas < lignes; bas++) {
 	                for (int col = 0; col < colonnes; col++) {
 	                    sommeTemp[col] += matrice[bas][col];
 	                }
-
-	                
 	                int[] result = kadane(sommeTemp);
 	                int sommeActuelle = result[0];
 
@@ -40,8 +33,6 @@ public class ex4 {
 	                }
 	            }
 	        }
-
-	        // Affichage du sous-tableau maximal
 	        System.out.println("Sous-tableau maximal :");
 	        for (int i = debutLigne; i <= finLigne; i++) {
 	            for (int j = debutCol; j <= finCol; j++) {
@@ -63,7 +54,6 @@ public class ex4 {
 	            } else {
 	                sommeCourante += arr[i];
 	            }
-
 	            if (sommeCourante > maxSomme) {
 	                maxSomme = sommeCourante;
 	                debut = tempDebut;
@@ -73,7 +63,4 @@ public class ex4 {
 
 	        return new int[]{maxSomme, debut, fin};
 	    }
-	
-
-
 }
